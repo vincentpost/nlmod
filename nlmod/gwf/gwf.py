@@ -353,7 +353,6 @@ def ghb(
     )
 
     if len(ghb_rec) > 0:
-        ghb_rec = [[cellid, bhead, cond, aux] for cellid, bhead, cond, aux in ghb_rec if bhead > ds.botm[cellid]]
         ghb = flopy.mf6.ModflowGwfghb(
             gwf,
             auxiliary="CONCENTRATION" if auxiliary is not None else None,
@@ -431,7 +430,6 @@ def drn(
     )
 
     if len(drn_rec) > 0:
-        drn_rec = [[cellid, elev, cond] for cellid, elev, cond in drn_rec if elev > ds.botm[cellid]]
         drn = flopy.mf6.ModflowGwfdrn(
             gwf,
             maxbound=len(drn_rec),
